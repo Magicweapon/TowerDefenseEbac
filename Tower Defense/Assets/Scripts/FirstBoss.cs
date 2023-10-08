@@ -6,8 +6,33 @@ using UnityEngine.AI;
 public class FirstBoss : MonoBehaviour
 {
     public GameObject target;
+    public int health = 100;
+
+    public Animator Anim;
+
     void Start()
     {
         GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
+        //Anim = GetComponent<Animator>();
+        Anim.SetBool("isMoving", true);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Target")
+        {
+            Anim.SetBool("isMoving", false);
+            Anim.SetTrigger("OnTargetReached");
+        }
+    }
+
+    public void DoDamage()
+    {
+        target?.GetComponent<Target>().ReceiveDamage(40);
+    }
+
+    public void ReceiveDamage(int damage = 5)
+    {
+        health -= damage;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int health = 100;
     void Start()
     {
         
@@ -14,5 +14,10 @@ public class Target : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ReceiveDamage(int damage = 20)
+    {
+        health -= damage;
     }
 }
