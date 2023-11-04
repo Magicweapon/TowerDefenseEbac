@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FirstBoss : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public GameObject target;
     public int health;

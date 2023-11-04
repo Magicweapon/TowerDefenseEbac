@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public int health = 100;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int health = 200;
 
     public void ReceiveDamage(int damage = 20)
     {
