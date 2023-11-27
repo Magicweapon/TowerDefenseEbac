@@ -9,7 +9,15 @@ public class Enemy : MonoBehaviour
     public int health;
 
     public Animator Anim;
+    private void OnEnable()
+    {
+        target = GameObject.Find("Target");
+    }
 
+    private void OnDisable()
+    {
+
+    }
     void Start()
     {
         GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
@@ -26,9 +34,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void DealDamage()
+    public void DealDamage(int damage)
     {
-        target?.GetComponent<Target>().ReceiveDamage(40);
+        target?.GetComponent<Target>().ReceiveDamage(damage);
     }
 
     public void ReceiveDamage(int damage = 5)

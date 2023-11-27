@@ -10,6 +10,11 @@ public class FirstBoss : MonoBehaviour
 
     public Animator Anim;
 
+    private void OnEnable()
+    {
+        target = GameObject.Find("Target");
+    }
+
     void Start()
     {
         GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
@@ -26,9 +31,9 @@ public class FirstBoss : MonoBehaviour
         }
     }
 
-    public void DealDamage()
+    public void DealDamage(int damage)
     {
-        target?.GetComponent<Target>().ReceiveDamage(40);
+        target?.GetComponent<Target>().ReceiveDamage(damage);
     }
 
     public void ReceiveDamage(int damage = 5)
