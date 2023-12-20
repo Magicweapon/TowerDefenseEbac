@@ -10,11 +10,38 @@ public class EnemySpawner : MonoBehaviour
 
     private int enemiesForThisWave;
 
-    public delegate void WaveFinished();
-    public event WaveFinished OnWaveFinished;
+    public bool WaveHasStarted;
+    public List<GameObject> EnemiesOnScene;
+
+    public delegate void WaveState();
+    public event WaveState OnWaveStarted;
+    public event WaveState OnWaveFinished;
+    public event WaveState OnWaveDefeated;
     void Start()
     {
         wave = 0;
+    }
+    private void FixedUpdate()
+    {
+        if (WaveHasStarted && EnemiesOnScene.Count == 0)
+        {
+            WinWave();
+        }
+    }
+    public void StartWave()
+    {
+        WaveHasStarted = true;
+        OnWaveStarted?.Invoke();
+        SetEnemiesQuantity();
+        InstantiateEnemy();
+    }
+    public void WinWave()
+    {
+        if (WaveHasStarted)
+        {
+            OnWaveDefeated?.Invoke();
+            WaveHasStarted = false;
+        }
     }
     public void FinishWave()
     {
@@ -27,9 +54,9 @@ public class EnemySpawner : MonoBehaviour
     public void InstantiateEnemy()
     {
         int randomIndex = Random.Range(0, enemiesPrefabs.Count);
-        Instantiate<GameObject>(enemiesPrefabs[randomIndex], transform.position, Quaternion.identity);
+        var tempEnemy = Instantiate<GameObject>(enemiesPrefabs[randomIndex], transform.position, Quaternion.identity);
+        EnemiesOnScene.Add(tempEnemy);
         enemiesForThisWave--;
-        Debug.Log(enemiesForThisWave);
 
         if (enemiesForThisWave == 0)
         {

@@ -1790,7 +1790,7 @@ GameObject:
   - component: {fileID: 6279276853772451895}
   m_Layer: 0
   m_Name: Warrok W Kurniawan
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1894,7 +1894,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 100
+  health: 160
+  defaultDamage: 5
+  earnedResources: 215
+  gameManager: {fileID: 0}
+  enemySpawner: {fileID: 0}
   Anim: {fileID: 0}
 --- !u!1 &6918358191938152378
 GameObject:

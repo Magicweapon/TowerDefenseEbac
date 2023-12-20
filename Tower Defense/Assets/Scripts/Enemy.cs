@@ -3,44 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : BaseEnemy
 {
-    public GameObject target;
-    public int health;
-
-    public Animator Anim;
-    private void OnEnable()
+    public override void OnDestroy()
     {
-        target = GameObject.Find("Target");
-    }
-
-    private void OnDisable()
-    {
-
-    }
-    void Start()
-    {
-        GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
-        Anim = GetComponent<Animator>();
-        Anim.SetBool("isMoving", true);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Target")
-        {
-            Anim.SetBool("isMoving", false);
-            Anim.SetTrigger("OnTargetMet");
-        }
-    }
-
-    public void DealDamage(int damage)
-    {
-        target?.GetComponent<Target>().ReceiveDamage(damage);
-    }
-
-    public void ReceiveDamage(int damage = 5)
-    {
-        health -= damage;
+        base.OnDestroy();
+        gameManager.enemiesDefeated++;
     }
 }

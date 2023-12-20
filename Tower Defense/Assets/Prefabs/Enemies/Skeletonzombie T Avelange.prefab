@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 2475587718762581936}
   m_Layer: 0
   m_Name: Skeletonzombie T Avelange
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1095,7 +1095,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 25
+  health: 50
+  defaultDamage: 1
+  earnedResources: 50
+  gameManager: {fileID: 0}
+  enemySpawner: {fileID: 0}
   Anim: {fileID: 0}
 --- !u!195 &2475587718762581936
 NavMeshAgent:

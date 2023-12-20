@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 2681791761661156563}
   m_Layer: 0
   m_Name: Vampire A Lusth
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1274,7 +1274,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 40
+  health: 70
+  defaultDamage: 2
+  earnedResources: 85
+  gameManager: {fileID: 0}
+  enemySpawner: {fileID: 0}
   Anim: {fileID: 0}
 --- !u!195 &2681791761661156563
 NavMeshAgent:
