@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 2503185673265920821}
   - component: {fileID: 8384918348091187535}
   - component: {fileID: 2681791761661156561}
-  - component: {fileID: 2681791761661156562}
+  - component: {fileID: 6678831881619915669}
   - component: {fileID: 2681791761661156572}
   - component: {fileID: 2681791761661156563}
   m_Layer: 0
@@ -1248,8 +1248,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &2681791761661156562
-BoxCollider:
+--- !u!136 &6678831881619915669
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1258,8 +1258,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2681791761661156572
 MonoBehaviour:
@@ -1275,8 +1276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   health: 70
-  defaultDamage: 2
-  earnedResources: 85
+  defaultDamage: 15
+  earnedResources: 115
   gameManager: {fileID: 0}
   enemySpawner: {fileID: 0}
   Anim: {fileID: 0}

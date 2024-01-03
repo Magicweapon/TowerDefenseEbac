@@ -53,7 +53,7 @@ public class BaseEnemy : MonoBehaviour, IAttacker, IAttackable
             GetComponent<NavMeshAgent>().SetDestination(transform.position);
         }
     }
-    public void DealDamage(int damage)
+    public void DealDamage(int damage = 0)
     {
         if (damage == 0) damage = defaultDamage;
         target?.GetComponent<Target>().ReceiveDamage(damage);

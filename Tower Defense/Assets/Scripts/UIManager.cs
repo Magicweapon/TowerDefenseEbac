@@ -17,26 +17,43 @@ public class UIManager : MonoBehaviour
     public Text waveText;
     public Text enemiesText;
     public Text bossesText;
+    public Button startButton;
 
     private void OnEnable()
     {
         targetReference.OnDestroyedObject += DisplayGameOverMenu;
         enemySpawner.OnWaveStarted += UpdateWave;
+        enemySpawner.OnWaveStarted += DisableStartButton;
         enemySpawner.OnWaveFinished += ShowLastEnemyMessage;
         enemySpawner.OnWaveDefeated += ShowWaveDefeatedMenu;
+        enemySpawner.OnWaveDefeated += EnableStartButtonDelayed;
         gameManager.OnResourcesModified += UpdateResources;
     }
     private void OnDisable()
     {
         targetReference.OnDestroyedObject -= DisplayGameOverMenu;
         enemySpawner.OnWaveStarted -= UpdateWave;
+        enemySpawner.OnWaveStarted -= DisableStartButton;
         enemySpawner.OnWaveFinished -= ShowLastEnemyMessage;
         enemySpawner.OnWaveDefeated -= ShowWaveDefeatedMenu;
+        enemySpawner.OnWaveDefeated -= EnableStartButtonDelayed;
         gameManager.OnResourcesModified -= UpdateResources;
+    }
+    public void DisableStartButton()
+    {
+        startButton.interactable = false;
+    }
+    public void EnableStartButtonDelayed()
+    {
+        Invoke("EnableStartButton", 2f);
+    }
+    public void EnableStartButton()
+    {
+        startButton.interactable = true;
     }
     public void UpdateWave()
     {
-        waveText.text = "Wave: " + enemySpawner.wave;
+        waveText.text = $"Wave: {enemySpawner.wave + 1}";
         HideWaveDefeatedMenu();
     }
     public void ShowLastEnemyMessage()

@@ -17,7 +17,11 @@ public class BaseTurret : MonoBehaviour
     private void Aim()
     {
         transform.GetChild(2).LookAt(enemy.transform);
-        //transform.LookAt(enemy.transform);
+        Quaternion tempVar;
+        tempVar = transform.GetChild(2).rotation;
+        tempVar.x = Quaternion.identity.x;
+        tempVar.z = Quaternion.identity.z;
+        transform.GetChild(2).rotation = tempVar;
     }
     public virtual void Shoot()
     {

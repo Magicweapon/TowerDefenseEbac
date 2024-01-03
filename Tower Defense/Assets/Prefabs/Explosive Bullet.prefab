@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3991122527899850863}
   - component: {fileID: 8027463280679331423}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: Explosive Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7a40fb60d48a774c9f1824f1e5be330, type: 2}
+  - {fileID: 2100000, guid: 9b7e33a38b34d644cb1a9df815bab54c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,4 +128,4 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   speed: 25
   enemy: {fileID: 0}
-  damage: 24
+  damage: 12

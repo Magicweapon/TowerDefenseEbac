@@ -63,7 +63,7 @@ public class TurretManager : MonoBehaviour
 
                 OnEnemyReset?.Invoke();
             }
-            Invoke("ResetEnemy", 3f);
+            Invoke("ResetEnemy", 2f);
         }
     }
     private void CreateTurret(GameObject platform)
