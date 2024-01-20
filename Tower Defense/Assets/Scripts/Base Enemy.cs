@@ -44,14 +44,19 @@ public class BaseEnemy : MonoBehaviour, IAttacker, IAttackable
         gameManager.ModifyResources(earnedResources);
         enemySpawner.EnemiesOnScene.Remove(this.gameObject);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Target")
+        if (other.gameObject.tag == "Target")
         {
             Anim.SetBool("isMoving", false);
             Anim.SetTrigger("OnTargetMet");
             GetComponent<NavMeshAgent>().SetDestination(transform.position);
+            Debug.Log("Enc");
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
     public void DealDamage(int damage = 0)
     {

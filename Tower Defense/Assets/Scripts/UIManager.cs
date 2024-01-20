@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateResources()
     {
-        resourcesText.text = $"Resources: {gameManager.resources}";
+        if (resourcesText != null) resourcesText.text = $"Resources: {gameManager.resources}";
     }
     public void DisplayGameOverMenu()
     {

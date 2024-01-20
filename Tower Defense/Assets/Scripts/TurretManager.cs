@@ -5,6 +5,9 @@ using System;
 
 public class TurretManager : MonoBehaviour
 {
+    public static float cannonAngle;
+    public static float yOffset;
+
     public TouchManager touchManager;
     public GameManager gameManager;
     public EnemySpawner enemySpawner;
@@ -25,7 +28,17 @@ public class TurretManager : MonoBehaviour
     }
 
     public SelectedTurret selectedTurret;
+    private void Start()
+    {
+        cannonAngle = 360 - turretPrefabs[4].gameObject.transform.GetChild(2).GetChild(2).GetChild(0).rotation.eulerAngles.x;
 
+        //Debug.Log(cannonAngle);
+
+        // yOffset is height from nav mesh path surface to cannon tip
+        yOffset = turretPrefabs[4].gameObject.transform.GetChild(2).GetChild(2).GetChild(0).position.y; // 4.13f
+
+        //Debug.Log(yOffset);
+    }
     private void OnEnable()
     {
         touchManager.OnPlatformClicked += CreateTurret;
@@ -70,9 +83,9 @@ public class TurretManager : MonoBehaviour
     {
         int cost = selectedTurret switch
         {
-            SelectedTurret.Tower1 => 400,
+            SelectedTurret.Tower1 => 300,
             SelectedTurret.Tower2 => 600,
-            SelectedTurret.Tower3 => 900,
+            SelectedTurret.Tower3 => 1150,
             SelectedTurret.Tower4 => 750,
             SelectedTurret.Tower5 => 1100,
             _ => 0

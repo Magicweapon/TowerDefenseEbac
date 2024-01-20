@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour, IAttacker
     public int damage;
     private void Start()
     {
-        destination.y += 1f;
+        destination.y += 1.0f;
     }
     private void Update()
     {
@@ -22,14 +22,18 @@ public class Bullet : MonoBehaviour, IAttacker
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
-            enemy = collision.gameObject;
+            enemy = other.gameObject;
             DealDamage(damage);
             Destroy(gameObject);
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
     public void DealDamage(int damage)
     {

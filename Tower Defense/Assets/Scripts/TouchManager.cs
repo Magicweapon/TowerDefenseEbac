@@ -48,7 +48,7 @@ public class TouchManager : MonoBehaviour
 
         if (Physics.Raycast(screenRay, out hit, Mathf.Infinity))
         {
-            Debug.Log(hit.transform.gameObject.name);
+            //Debug.Log(hit.transform.gameObject.name);
             if (hit.transform.gameObject.tag == "Platform")
             {
                 //Debug.Log("Platform clicked");

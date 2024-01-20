@@ -1256,7 +1256,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3023827091036365199}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -1275,9 +1275,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 70
-  defaultDamage: 15
-  earnedResources: 115
+  health: 340
+  defaultDamage: 60
+  earnedResources: 65
   gameManager: {fileID: 0}
   enemySpawner: {fileID: 0}
   Anim: {fileID: 0}

@@ -7,14 +7,10 @@ public class GameManager : MonoBehaviour
     public int enemiesDefeated;
     public int bossesDefeated;
     public int resources;
+    public float yOffset;
 
     public delegate void ResourcesModified();
     public ResourcesModified OnResourcesModified;
-
-    private void Start()
-    {
-        
-    }
     public void ModifyResources(int mod)
     {
         resources += mod;

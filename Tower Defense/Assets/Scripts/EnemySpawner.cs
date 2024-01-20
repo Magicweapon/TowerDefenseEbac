@@ -55,6 +55,9 @@ public class EnemySpawner : MonoBehaviour
     {
         int randomIndex = Random.Range(0, enemiesPrefabs.Count);
         var tempEnemy = Instantiate<GameObject>(enemiesPrefabs[randomIndex], transform.position, Quaternion.identity);
+        var angle = tempEnemy.transform.eulerAngles;
+        angle.y += 180;
+        tempEnemy.transform.eulerAngles = angle;
         EnemiesOnScene.Add(tempEnemy);
         enemiesForThisWave--;
 
@@ -66,6 +69,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Invoke("InstantiateEnemy", 2f);
+        Invoke("InstantiateEnemy", 1.5f);
     }
 }
