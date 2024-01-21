@@ -13,7 +13,8 @@ public class GrenadeTurret : BaseTurret, IAttacker
         foreach (GameObject tip in cannonTips)
         {
             var tempBullet = Instantiate(bulletPrefab, tip.transform.position, tip.transform.rotation);
-            tempBullet.GetComponent<ExplosiveBullet>().destination = enemy.transform.position;
+            tempBullet.GetComponent<ExplosiveBullet>().destination = enemyPosition;
+            //Debug.Log(enemy.transform.position.y); // Not correct
         }
     }
     public void DealDamage(int damage = 0)

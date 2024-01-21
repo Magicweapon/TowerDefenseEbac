@@ -71,12 +71,14 @@ public class TurretManager : MonoBehaviour
                 foreach (GameObject turret in instantiatedTurrets)
                 {
                     turret.GetComponent<BaseTurret>().enemy = nearestEnemy;
-                    turret.GetComponent<BaseTurret>().Shoot();
+                    turret.GetComponent<BaseTurret>().enemyPosition = nearestEnemy.transform.position;
+                    turret.GetComponent<BaseTurret>().Invoke("Shoot", 0.03f);
+                    //Debug.Log(nearestEnemy.transform.position.y); // Correct
                 }
 
                 OnEnemyReset?.Invoke();
             }
-            Invoke("ResetEnemy", 2f);
+            Invoke("ResetEnemy", 2.0f);
         }
     }
     private void CreateTurret(GameObject platform)

@@ -10,31 +10,27 @@ public class ExplosiveBullet : MonoBehaviour, IAttacker
     private float speed;
     void Start()
     {
-        var angle = TurretManager.cannonAngle;
-        var yy = TurretManager.yOffset * -1.0f;
+        var angle = TurretManager.cannonAngle * Mathf.Deg2Rad;
+
         var enemyPos = destination;
-        //enemyPos.y -= yy;
         enemyPos.y = transform.position.y;
+
         var xx = Vector3.Distance(transform.position, enemyPos);
+        var yy = TurretManager.yOffset * -1.0f;
 
-        Debug.Log($"angle: {angle}");
-        Debug.Log($"Y: {yy}");
-        Debug.Log($"Enemy Position{enemyPos}");
-        Debug.Log($"X: {xx}");
+        speed = Mathf.Sqrt(   (  0.5f * 9.81f * (Mathf.Pow(xx, 2))  )  /  (  (xx * Mathf.Tan(angle)) - yy  )   )   /   Mathf.Cos(angle);
 
-        speed = Mathf.Sqrt(   (0.5f * 9.81f * (Mathf.Pow(xx, 2))) / ((xx * (Mathf.Sin(angle) / Mathf.Cos(angle))) - yy)   ) / Mathf.Cos(angle);
-        Debug.Log($"Speed: {speed}");
         Vector3 shotDirection;
         shotDirection = transform.rotation * Vector3.forward;
-        GetComponent<Rigidbody>().velocity = shotDirection * 24.2f;
+        GetComponent<Rigidbody>().velocity = shotDirection * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, destination) < 0.05f)
+        if (transform.position.y < 2.46f)
         {
-            Destroy(gameObject);
+            Explode();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -43,7 +39,6 @@ public class ExplosiveBullet : MonoBehaviour, IAttacker
         {
             enemy = other.gameObject;
             DealDamage(damage);
-            //Destroy(gameObject);
             Explode();
         }
     }

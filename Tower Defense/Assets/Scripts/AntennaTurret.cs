@@ -39,7 +39,7 @@ public class AntennaTurret : BaseTurret, IAttacker
         List<Vector3> tempPoints = new List<Vector3>();
         float divider = 1.0f / rayDivisions;
         float linear = 0.0f;
-        bool isPositive = false;
+        //bool isPositive = false;
         Vector3 enemyPos = enemy.transform.position;
         enemyPos.y += 1.0f;
 
@@ -69,7 +69,7 @@ public class AntennaTurret : BaseTurret, IAttacker
 
             var point = Vector3.Lerp(cannonTips[0].transform.position, enemyPos, linear);
 
-            point += Random.insideUnitSphere * 0.7f;
+            point += Random.insideUnitSphere * 0.6f;
 
             //if (isPositive)
             //{

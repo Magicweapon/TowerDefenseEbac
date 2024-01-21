@@ -51,7 +51,6 @@ public class BaseEnemy : MonoBehaviour, IAttacker, IAttackable
             Anim.SetBool("isMoving", false);
             Anim.SetTrigger("OnTargetMet");
             GetComponent<NavMeshAgent>().SetDestination(transform.position);
-            Debug.Log("Enc");
         }
     }
     private void OnCollisionEnter(Collision collision)

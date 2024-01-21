@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseTurret : MonoBehaviour
 {
     public GameObject enemy;
+    public Vector3 enemyPosition;
     public GameObject bulletPrefab;
     public List<GameObject> cannonTips;
     void Update()
@@ -28,7 +29,8 @@ public class BaseTurret : MonoBehaviour
         foreach (GameObject tip in cannonTips)
         {
             var tempBullet = Instantiate(bulletPrefab, tip.transform.position, Quaternion.identity);
-            tempBullet.GetComponent<Bullet>().destination = enemy.transform.position;
+            tempBullet.GetComponent<Bullet>().destination = enemyPosition;
+            //Debug.Log(enemy.transform.position.y); // Not correct
         }
     }
 }
