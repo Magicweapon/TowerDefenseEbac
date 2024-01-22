@@ -73,6 +73,7 @@ public class TurretManager : MonoBehaviour
                     turret.GetComponent<BaseTurret>().enemy = nearestEnemy;
                     turret.GetComponent<BaseTurret>().enemyPosition = nearestEnemy.transform.position;
                     turret.GetComponent<BaseTurret>().Invoke("Shoot", 0.03f);
+
                     //Debug.Log(nearestEnemy.transform.position.y); // Correct
                 }
 
@@ -85,10 +86,10 @@ public class TurretManager : MonoBehaviour
     {
         int cost = selectedTurret switch
         {
-            SelectedTurret.Tower1 => 300,
+            SelectedTurret.Tower1 => 275,
             SelectedTurret.Tower2 => 600,
             SelectedTurret.Tower3 => 1150,
-            SelectedTurret.Tower4 => 750,
+            SelectedTurret.Tower4 => 700,
             SelectedTurret.Tower5 => 1100,
             _ => 0
         };

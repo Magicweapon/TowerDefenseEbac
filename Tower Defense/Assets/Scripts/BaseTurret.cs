@@ -8,7 +8,7 @@ public class BaseTurret : MonoBehaviour
     public Vector3 enemyPosition;
     public GameObject bulletPrefab;
     public List<GameObject> cannonTips;
-    void Update()
+    public virtual void Update()
     {
         if (enemy != null)
         {
@@ -30,7 +30,8 @@ public class BaseTurret : MonoBehaviour
         {
             var tempBullet = Instantiate(bulletPrefab, tip.transform.position, Quaternion.identity);
             tempBullet.GetComponent<Bullet>().destination = enemyPosition;
-            //Debug.Log(enemy.transform.position.y); // Not correct
+
+            //Debug.Log(enemy.transform.position.y); // Not correct because of the 0.03 seconds delay
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrenadeTurret : BaseTurret, IAttacker
+public class GrenadeTurret : BaseTurret
 {
     void Start()
     {
@@ -16,9 +16,5 @@ public class GrenadeTurret : BaseTurret, IAttacker
             tempBullet.GetComponent<ExplosiveBullet>().destination = enemyPosition;
             //Debug.Log(enemy.transform.position.y); // Not correct
         }
-    }
-    public void DealDamage(int damage = 0)
-    {
-        enemy.GetComponent<BaseEnemy>().ReceiveDamage(damage);
     }
 }

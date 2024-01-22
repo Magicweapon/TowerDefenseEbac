@@ -28,7 +28,7 @@ public class ExplosiveBullet : MonoBehaviour, IAttacker
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < 2.46f)
+        if (transform.position.y < 2.455f)
         {
             Explode();
         }

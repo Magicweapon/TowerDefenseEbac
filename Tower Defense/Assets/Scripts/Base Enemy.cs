@@ -36,7 +36,7 @@ public class BaseEnemy : MonoBehaviour, IAttacker, IAttackable
         {
             Anim.SetTrigger("OnDeath");
             GetComponent<NavMeshAgent>().SetDestination(transform.position);
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 3.0f);
         }
     }
     public virtual void OnDestroy()

@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour, IAttacker
     {
         destination.y += 1.0f;
     }
-    private void Update()
+    public virtual void Update()
     {
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, destination, step);
@@ -30,10 +30,6 @@ public class Bullet : MonoBehaviour, IAttacker
             DealDamage(damage);
             Destroy(gameObject);
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        
     }
     public void DealDamage(int damage)
     {
