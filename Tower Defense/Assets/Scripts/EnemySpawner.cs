@@ -30,6 +30,10 @@ public class EnemySpawner : MonoBehaviour
     }
     public void StartWave()
     {
+        if (wave == enemiesPerWave.Count)
+        {
+            return;
+        }
         WaveHasStarted = true;
         OnWaveStarted?.Invoke();
         SetEnemiesQuantity();
@@ -69,6 +73,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Invoke("InstantiateEnemy", 1.5f);
+        Invoke("InstantiateEnemy", 1.0f + 1.0f / 3.0f);
     }
 }

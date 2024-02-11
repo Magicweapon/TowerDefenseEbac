@@ -17,11 +17,14 @@ public class UIManager : MonoBehaviour
     public Text waveText;
     public Text enemiesText;
     public Text bossesText;
+    public Text gameWonText;
     public Button startButton;
+    public Button leaveButton;
 
     private void OnEnable()
     {
         targetReference.OnDestroyedObject += DisplayGameOverMenu;
+        targetReference.OnDestroyedObject += SetBoolFalse;
         enemySpawner.OnWaveStarted += UpdateWave;
         enemySpawner.OnWaveStarted += DisableStartButton;
         enemySpawner.OnWaveFinished += ShowLastEnemyMessage;
@@ -32,6 +35,7 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         targetReference.OnDestroyedObject -= DisplayGameOverMenu;
+        targetReference.OnDestroyedObject -= SetBoolFalse;
         enemySpawner.OnWaveStarted -= UpdateWave;
         enemySpawner.OnWaveStarted -= DisableStartButton;
         enemySpawner.OnWaveFinished -= ShowLastEnemyMessage;
@@ -39,13 +43,23 @@ public class UIManager : MonoBehaviour
         enemySpawner.OnWaveDefeated -= EnableStartButtonDelayed;
         gameManager.OnResourcesModified -= UpdateResources;
     }
+    public void SetBoolFalse()
+    {
+        enemySpawner.WaveHasStarted = false;
+    }
     public void DisableStartButton()
     {
         startButton.interactable = false;
     }
     public void EnableStartButtonDelayed()
     {
-        Invoke("EnableStartButton", 2f);
+        if (enemySpawner.wave == enemySpawner.enemiesPerWave.Count)
+        {
+            Debug.Log("¡Última oleada derrotada!");
+            leaveButton.gameObject.SetActive(true);
+            return;
+        }
+        Invoke("EnableStartButton", 2.5f);
     }
     public void EnableStartButton()
     {
@@ -67,8 +81,13 @@ public class UIManager : MonoBehaviour
     }
     public void ShowWaveDefeatedMenu()
     {
-        enemiesText.text = "Enemies: " + gameManager.enemiesDefeated;
-        bossesText.text = "Bosses: " + gameManager.bossesDefeated;
+        if (enemySpawner.wave == enemySpawner.enemiesPerWave.Count)
+        {
+            gameWonText.gameObject.SetActive(true);
+        }
+
+        enemiesText.text = "Enemies defeated: " + gameManager.enemiesDefeated;
+        bossesText.text = "Bosses defeated: " + gameManager.bossesDefeated;
         WaveDefeatedMenu.SetActive(true);
     }
     public void HideWaveDefeatedMenu()

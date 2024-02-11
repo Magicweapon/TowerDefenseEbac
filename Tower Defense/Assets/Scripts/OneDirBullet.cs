@@ -6,7 +6,7 @@ public class OneDirBullet : Bullet
 {
     void Start()
     {
-        Destroy(gameObject, 3.0f);
+        Destroy(gameObject, 1.0f);
     }
     public override void Update()
     {

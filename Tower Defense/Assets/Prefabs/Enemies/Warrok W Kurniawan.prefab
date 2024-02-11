@@ -1897,7 +1897,7 @@ MonoBehaviour:
   target: {fileID: 0}
   health: 2156
   defaultDamage: 160
-  earnedResources: 155
+  earnedResources: 170
   gameManager: {fileID: 0}
   enemySpawner: {fileID: 0}
   Anim: {fileID: 0}

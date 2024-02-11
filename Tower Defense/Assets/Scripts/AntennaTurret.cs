@@ -69,7 +69,7 @@ public class AntennaTurret : BaseTurret, IAttacker
 
             var point = Vector3.Lerp(cannonTips[0].transform.position, enemyPos, linear);
 
-            point += Random.insideUnitSphere * 0.6f;
+            point += Random.insideUnitSphere * 1.5f;
 
             //if (isPositive)
             //{

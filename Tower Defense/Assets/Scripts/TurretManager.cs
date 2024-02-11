@@ -79,18 +79,18 @@ public class TurretManager : MonoBehaviour
 
                 OnEnemyReset?.Invoke();
             }
-            Invoke("ResetEnemy", 2.0f);
+            Invoke("ResetEnemy", 2.5f);
         }
     }
     private void CreateTurret(GameObject platform)
     {
         int cost = selectedTurret switch
         {
-            SelectedTurret.Tower1 => 275,
+            SelectedTurret.Tower1 => 285,
             SelectedTurret.Tower2 => 600,
-            SelectedTurret.Tower3 => 1150,
-            SelectedTurret.Tower4 => 700,
-            SelectedTurret.Tower5 => 1100,
+            SelectedTurret.Tower3 => 950,
+            SelectedTurret.Tower4 => 750,
+            SelectedTurret.Tower5 => 1050,
             _ => 0
         };
 
